@@ -1,6 +1,7 @@
 import tkinter as tk
 import time
 import math
+from tkinter import messagebox
  
  # tk.Frameを継承したApplicationクラスを作成
 class Application(tk.Frame):
@@ -164,8 +165,19 @@ class Application(tk.Frame):
     def update_sec_text(self):
         self.canvas_time.delete("sec_text") # 表示時間（秒）を消去
         self.canvas_time.create_text(365,40,text=str(self.left_sec).zfill(2), font=("MSゴシック体", "36", "bold"), tag="sec_text", anchor="w") # 秒を表示
- 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = Application(master=root)
-    app.mainloop()
+    
+    
+
+
+root = tk.Tk()
+app = Application(master=root)
+# メニュー表示
+menubar = tk.Menu(root)
+root.config(menu=menubar)
+filemenu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label='メニュー', menu=filemenu)
+# バージョンの表示
+def version_look():
+    messagebox.showinfo("バージョン情報", str("Ver.1.0.0.0"))
+filemenu.add_command(label='バージョン情報', command=version_look)
+app.mainloop()
