@@ -24,7 +24,6 @@ class Application(tk.Frame):
         self.after_id = 0 # after_id変数を定義
  
         # 実行内容
-        # self.pack()
         self.create_widget()
  
     # create_widgetメソッドを定義
@@ -162,7 +161,7 @@ class Application(tk.Frame):
             self.after_id = self.after(10, self.update_time)
         else:
             # タイマーが0になったら音を鳴らす(繰り返し再生)
-            winsound.PlaySound("test.wav", winsound.SND_LOOP | winsound.SND_ASYNC)
+            winsound.PlaySound("alarm.WAV", winsound.SND_FILENAME | winsound.SND_LOOP | winsound.SND_ASYNC)
 
             self.timer_on = False
  
